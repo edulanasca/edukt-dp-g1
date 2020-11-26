@@ -2,11 +2,13 @@ package com.edukt.grados.segundo.ciencia.sociales;
 
 import com.edukt.grados.cursos.CursoCienciasSociales;
 import com.edukt.grados.cursos.temas.Tema;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+@Document("CS2G")
 public class CursoCienciasSocialesSegundoGrado extends CursoCienciasSociales {
-  public CursoCienciasSocialesSegundoGrado(String nombre, String descripcion, List<Tema> temas) {
+  public CursoCienciasSocialesSegundoGrado(String descripcion, List<Tema> temas) {
     super("Ciencias Sociales", descripcion, temas);
   }
 

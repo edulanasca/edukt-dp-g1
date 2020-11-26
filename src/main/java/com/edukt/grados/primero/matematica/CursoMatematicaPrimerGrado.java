@@ -18,6 +18,7 @@ public class CursoMatematicaPrimerGrado extends CursoMatematica {
 
   public CursoMatematicaPrimerGrado() {
     super("Matemática", "Curso de Matemática de Primer Grado");
+
   }
 
 }
