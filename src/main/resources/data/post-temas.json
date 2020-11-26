@@ -1,0 +1,21 @@
+[
+  {
+    "titulo": "Titulo 1",
+    "descripcion": "Descripcion",
+    "secciones": [
+      {
+        "img_urls": [
+          "url_1",
+          "url_2"
+        ],
+        "contenido": "Contenido de esta seccion"
+      },
+      {
+        "img_urls": [
+          "otra_url"
+        ],
+        "contenido": "Contenido de la otra seccion"
+      }
+    ]
+  }
+]
