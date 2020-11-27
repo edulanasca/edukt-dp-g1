@@ -20,3 +20,4 @@ public abstract class CursoComunicacion extends Curso {
     super(nombre, descripcion);
   }
 }
+
