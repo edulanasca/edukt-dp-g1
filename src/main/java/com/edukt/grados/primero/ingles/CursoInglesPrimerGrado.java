@@ -11,9 +11,16 @@ public class CursoInglesPrimerGrado extends CursoIngles {
 
   public CursoInglesPrimerGrado(String descripcion, List<Tema> temas) {
     super("Inglés", descripcion, temas);
+
+  }
+
+  public CursoInglesPrimerGrado(String descripcion) {
+    super("Inglés", descripcion);
+
   }
 
   public CursoInglesPrimerGrado() {
     super("Inglés", "Curso de Inglés de Primer Grado");
+
   }
 }

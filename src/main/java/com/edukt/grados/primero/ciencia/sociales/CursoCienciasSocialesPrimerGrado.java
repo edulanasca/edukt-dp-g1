@@ -15,6 +15,7 @@ public class CursoCienciasSocialesPrimerGrado extends CursoCienciasSociales {
 
   public CursoCienciasSocialesPrimerGrado(String descripcion) {
     super("Ciencias Sociales", descripcion);
+
   }
 
   public CursoCienciasSocialesPrimerGrado() {

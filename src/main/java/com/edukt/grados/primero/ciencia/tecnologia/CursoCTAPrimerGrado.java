@@ -12,6 +12,11 @@ public class CursoCTAPrimerGrado extends CursoCTA {
     super("Ciencia, Tecnología y Ambiente", descripcion, temas);
   }
 
+  public CursoCTAPrimerGrado(String descripcion) {
+    super("Ciencia, Tecnología y Ambiente", descripcion);
+
+  }
+
   public CursoCTAPrimerGrado() {
     super("Ciencia, Tecnología y Ambiente", "Curso de Ciencia, Tecnología y Ambiente de Primer Grado");
   }
