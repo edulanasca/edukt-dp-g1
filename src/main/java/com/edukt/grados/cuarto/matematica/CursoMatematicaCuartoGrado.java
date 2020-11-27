@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document("MAT1G")
+@Document("MAT4G")
 public class CursoMatematicaCuartoGrado extends CursoMatematica {
     public CursoMatematicaCuartoGrado(String descripcion, List<Tema> temas) {
         super("Matemática", descripcion, temas);
@@ -17,7 +17,7 @@ public class CursoMatematicaCuartoGrado extends CursoMatematica {
     }
 
     public CursoMatematicaCuartoGrado() {
-        super("Matemática", "Curso de Matemática de Primer Grado");
+        super("Matemática", "Curso de Matemática de Cuarto Grado");
     }
 
 }

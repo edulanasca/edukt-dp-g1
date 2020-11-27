@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document("CTA1G")
+@Document("CTA4G")
 public class CursoCTACuartoGrado extends CursoCTA {
     public CursoCTACuartoGrado(String descripcion, List<Tema> temas) {
         super("Ciencia, Tecnología y Ambiente", descripcion, temas);
