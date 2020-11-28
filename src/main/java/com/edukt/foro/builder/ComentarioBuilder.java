@@ -28,7 +28,7 @@ public class ComentarioBuilder implements ForoBuilder {
   @Override
   public ComentarioBuilder conFechaHora(LocalDateTime fechaHora) {
     this.fechaPub = fechaHora;
-    return null;
+    return this;
   }
 
   @Override
