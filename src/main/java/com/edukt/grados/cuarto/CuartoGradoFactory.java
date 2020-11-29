@@ -1,38 +1,38 @@
 package com.edukt.grados.cuarto;
 
 import com.edukt.grados.GradoFactory;
-import com.edukt.grados.cursos.*;
-import com.edukt.grados.cuarto.ciencia.tecnologia.CursoCTACuartoGrado;
-import com.edukt.grados.cuarto.ciencia.sociales.CursoCienciasSocialesCuartoGrado;
-import com.edukt.grados.cuarto.comunicacion.CursoComunicacionCuartoGrado;
-import com.edukt.grados.cuarto.ingles.CursoInglesCuartoGrado;
-import com.edukt.grados.cuarto.matematica.CursoMatematicaCuartoGrado;
+import com.edukt.grados.tema.*;
+import com.edukt.grados.cuarto.ciencia.tecnologia.TemaCTACuartoGrado;
+import com.edukt.grados.cuarto.ciencia.sociales.TemaCienciasSocialesCuartoGrado;
+import com.edukt.grados.cuarto.comunicacion.TemaComunicacionCuartoGrado;
+import com.edukt.grados.cuarto.ingles.TemaInglesCuartoGrado;
+import com.edukt.grados.cuarto.matematica.TemaMatematicaCuartoGrado;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CuartoGradoFactory implements GradoFactory {
     @Override
-    public CursoCienciasSociales getCursoCienciasSociales() {
-        return new CursoCienciasSocialesCuartoGrado();
+    public TemaCienciasSociales getTemaCienciasSociales() {
+        return new TemaCienciasSocialesCuartoGrado();
     }
 
     @Override
-    public CursoCTA getCursoCienciaTecnologia() {
-        return new CursoCTACuartoGrado();
+    public TemaCTA getTemaCienciaTecnologia() {
+        return new TemaCTACuartoGrado();
     }
 
     @Override
-    public CursoComunicacion getComunicacion() {
-        return new CursoComunicacionCuartoGrado();
+    public TemaComunicacion getTemaComunicacion() {
+        return new TemaComunicacionCuartoGrado();
     }
 
     @Override
-    public CursoIngles getIngles() {
-        return new CursoInglesCuartoGrado();
+    public TemaIngles getTemaIngles() {
+        return new TemaInglesCuartoGrado();
     }
 
     @Override
-    public CursoMatematica getCursoMatematica() {
-        return new CursoMatematicaCuartoGrado();
+    public TemaMatematica getTemaMatematica() {
+        return new TemaMatematicaCuartoGrado();
     }
 }

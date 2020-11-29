@@ -1,38 +1,38 @@
 package com.edukt.grados.segundo;
 
 import com.edukt.grados.GradoFactory;
-import com.edukt.grados.cursos.*;
-import com.edukt.grados.segundo.ciencia.sociales.CursoCienciasSocialesSegundoGrado;
-import com.edukt.grados.segundo.ciencia.tecnologia.CursoCTASegundoGrado;
-import com.edukt.grados.segundo.comunicacion.CursoComunicacionSegundoGrado;
-import com.edukt.grados.segundo.ingles.CursoInglesSegundoGrado;
-import com.edukt.grados.segundo.matematica.CursoMatematicaSegundoGrado;
+import com.edukt.grados.tema.*;
+import com.edukt.grados.segundo.ciencia.sociales.TemaCienciasSocialesSegundoGrado;
+import com.edukt.grados.segundo.ciencia.tecnologia.TemaCTASegundoGrado;
+import com.edukt.grados.segundo.comunicacion.TemaComunicacionSegundoGrado;
+import com.edukt.grados.segundo.ingles.TemaInglesSegundoGrado;
+import com.edukt.grados.segundo.matematica.TemaMatematicaSegundoGrado;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SegundoGradoFactory implements GradoFactory {
   @Override
-  public CursoCienciasSociales getCursoCienciasSociales() {
-    return new CursoCienciasSocialesSegundoGrado();
+  public TemaCienciasSociales getTemaCienciasSociales() {
+    return new TemaCienciasSocialesSegundoGrado();
   }
 
   @Override
-  public CursoCTA getCursoCienciaTecnologia() {
-    return new CursoCTASegundoGrado();
+  public TemaCTA getTemaCienciaTecnologia() {
+    return new TemaCTASegundoGrado();
   }
 
   @Override
-  public CursoComunicacion getComunicacion() {
-    return new CursoComunicacionSegundoGrado();
+  public TemaComunicacion getTemaComunicacion() {
+    return new TemaComunicacionSegundoGrado();
   }
 
   @Override
-  public CursoIngles getIngles() {
-    return new CursoInglesSegundoGrado();
+  public TemaIngles getTemaIngles() {
+    return new TemaInglesSegundoGrado();
   }
 
   @Override
-  public CursoMatematica getCursoMatematica() {
-    return new CursoMatematicaSegundoGrado();
+  public TemaMatematica getTemaMatematica() {
+    return new TemaMatematicaSegundoGrado();
   }
 }

@@ -1,11 +1,11 @@
 package com.edukt.grados;
 
-import com.edukt.grados.cursos.*;
+import com.edukt.grados.tema.*;
 
 public interface GradoFactory {
-  CursoCienciasSociales getCursoCienciasSociales();
-  CursoCTA getCursoCienciaTecnologia();
-  CursoComunicacion getComunicacion();
-  CursoIngles getIngles();
-  CursoMatematica getCursoMatematica();
+  TemaCienciasSociales getTemaCienciasSociales();
+  TemaCTA getTemaCienciaTecnologia();
+  TemaComunicacion getTemaComunicacion();
+  TemaIngles getTemaIngles();
+  TemaMatematica getTemaMatematica();
 }

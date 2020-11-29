@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/foro", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,15 +22,15 @@ public class ForoController {
   }
 
   @PostMapping("/publicaciones")
-  public ResponseEntity<ApiResponse> addPublicacion(@RequestBody Map<String, Object> json) {
-    Publicacion p = foroService.addPublicacion(json);
+  public ResponseEntity<ApiResponse> addPublicacion(@RequestBody Publicacion publicacion) {
+    Publicacion p = foroService.addPublicacion(publicacion);
     return ResponseEntity
         .created(URI.create("/foro/publicaciones/" + p.getId()))
         .body(new ApiResponse(ApiResponse.Tipo.SUCCESS, p));
   }
 
   @GetMapping("/publicaciones")
-  public ResponseEntity<ApiResponse> allPublicaciones() { // TODO pagination
+  public ResponseEntity<ApiResponse> allPublicaciones() {
     return ResponseEntity.ok(new ApiResponse(ApiResponse.Tipo.SUCCESS, foroService.allPublicaciones()));
   }
 

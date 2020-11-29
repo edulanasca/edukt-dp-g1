@@ -1,0 +1,8 @@
+server:
+  servlet:
+    context-path: /edukt
+
+spring:
+  data:
+    mongodb:
+      database: edukt-db

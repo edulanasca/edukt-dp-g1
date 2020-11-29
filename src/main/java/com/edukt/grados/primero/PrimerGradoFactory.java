@@ -1,38 +1,38 @@
 package com.edukt.grados.primero;
 
 import com.edukt.grados.GradoFactory;
-import com.edukt.grados.cursos.*;
-import com.edukt.grados.primero.ciencia.tecnologia.CursoCTAPrimerGrado;
-import com.edukt.grados.primero.ciencia.sociales.CursoCienciasSocialesPrimerGrado;
-import com.edukt.grados.primero.comunicacion.CursoComunicacionPrimerGrado;
-import com.edukt.grados.primero.ingles.CursoInglesPrimerGrado;
-import com.edukt.grados.primero.matematica.CursoMatematicaPrimerGrado;
+import com.edukt.grados.tema.*;
+import com.edukt.grados.primero.ciencia.tecnologia.TemaCTAPrimerGrado;
+import com.edukt.grados.primero.ciencia.sociales.TemaCienciasSocialesPrimerGrado;
+import com.edukt.grados.primero.comunicacion.TemaComunicacionPrimerGrado;
+import com.edukt.grados.primero.ingles.TemaInglesPrimerGrado;
+import com.edukt.grados.primero.matematica.TemaMatematicaPrimerGrado;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PrimerGradoFactory implements GradoFactory {
   @Override
-  public CursoCienciasSociales getCursoCienciasSociales() {
-    return new CursoCienciasSocialesPrimerGrado();
+  public TemaCienciasSociales getTemaCienciasSociales() {
+    return new TemaCienciasSocialesPrimerGrado();
   }
 
   @Override
-  public CursoCTA getCursoCienciaTecnologia() {
-    return new CursoCTAPrimerGrado();
+  public TemaCTA getTemaCienciaTecnologia() {
+    return new TemaCTAPrimerGrado();
   }
 
   @Override
-  public CursoComunicacion getComunicacion() {
-    return new CursoComunicacionPrimerGrado();
+  public TemaComunicacion getTemaComunicacion() {
+    return new TemaComunicacionPrimerGrado();
   }
 
   @Override
-  public CursoIngles getIngles() {
-    return new CursoInglesPrimerGrado();
+  public TemaIngles getTemaIngles() {
+    return new TemaInglesPrimerGrado();
   }
 
   @Override
-  public CursoMatematica getCursoMatematica() {
-    return new CursoMatematicaPrimerGrado();
+  public TemaMatematica getTemaMatematica() {
+    return new TemaMatematicaPrimerGrado();
   }
 }

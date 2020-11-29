@@ -1,7 +1,6 @@
 package com.edukt.foro;
 
 import com.edukt.foro.builder.ComentarioBuilder;
-import com.edukt.foro.builder.PublicacionBuilder;
 import com.edukt.foro.model.Comentario;
 import com.edukt.foro.model.Foro;
 import com.edukt.foro.model.Publicacion;
@@ -9,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ForoService {
@@ -21,17 +20,19 @@ public class ForoService {
     this.publicacionRepository = publicacionRepository;
   }
 
-  public Publicacion addPublicacion(Map<String, Object> json) {
+  public Publicacion addPublicacion(Publicacion publicacion) {
 
-    PublicacionBuilder publicacion = new PublicacionBuilder();
+    publicacion.setComentarios(publicacion
+        .getComentarios()
+        .stream()
+        .map(e -> new ComentarioBuilder()
+            .conAutor(e.getAutor())
+            .conTexto(e.getTexto())
+            .conFechaHora(e.getFechaPub())
+            .build())
+        .collect(Collectors.toList()));
 
-    return this.publicacionRepository.save(publicacion
-        .conAutor((String) json.get("autor"))
-        .conGrado((Integer) json.get("grado"))
-        .conCurso((String) json.get("curso"))
-        .conTitulo((String) json.get("titulo"))
-        .conTexto((String) json.get("texto"))
-        .build());
+    return this.publicacionRepository.save(publicacion);
   }
 
   public List<Publicacion> allPublicaciones() {
@@ -39,7 +40,7 @@ public class ForoService {
   }
 
   public Publicacion buscarPublicacion(String id) throws NullPointerException {
-    return this.publicacionRepository.findById(id).orElseThrow(NullPointerException::new);
+    return this.publicacionRepository.findById(id).orElseThrow(NullPointerException::new).buscar(id);
   }
 
   public Publicacion updatePublicacion(Publicacion publicacion) {
@@ -62,8 +63,7 @@ public class ForoService {
   public Comentario buscarComentario(String uuid) throws NullPointerException {
 
     Foro foro = this.publicacionRepository.findByComentarioId(uuid).orElseThrow(NullPointerException::new);
-    ComentarioBuilder builder = new ComentarioBuilder();
-    return builder
+    return new ComentarioBuilder()
         .conId(uuid)
         .conAutor(foro.getAutor())
         .conTexto(foro.getTexto())

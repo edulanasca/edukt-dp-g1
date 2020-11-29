@@ -4,6 +4,7 @@ import com.edukt.foro.model.Foro;
 import com.edukt.foro.model.Publicacion;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PublicacionBuilder implements ForoBuilder {
@@ -16,6 +17,10 @@ public class PublicacionBuilder implements ForoBuilder {
   private String titulo;
   private String texto;
   private List<Foro> comentarios;
+
+  public PublicacionBuilder() {
+    comentarios = new ArrayList<>();
+  }
 
   @Override
   public PublicacionBuilder conId(String id) {
