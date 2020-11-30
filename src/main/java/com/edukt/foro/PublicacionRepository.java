@@ -7,9 +7,11 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RepositoryRestResource(path = "publicaciones")
 public interface PublicacionRepository
     extends MongoRepository<Publicacion, String> {

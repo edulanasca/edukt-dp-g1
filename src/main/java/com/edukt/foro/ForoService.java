@@ -55,7 +55,7 @@ public class ForoService {
 
     Publicacion publicacion = buscarPublicacion(idPublicacion);
     publicacion.agregarComentario(comentario);
-    this.publicacionRepository.insert(publicacion);
+    this.publicacionRepository.save(publicacion);
 
     return comentario;
   }

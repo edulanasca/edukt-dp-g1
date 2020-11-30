@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/foro", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ForoController {
