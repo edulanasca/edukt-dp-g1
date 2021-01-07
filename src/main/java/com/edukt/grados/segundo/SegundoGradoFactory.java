@@ -12,27 +12,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class SegundoGradoFactory implements GradoFactory {
   @Override
-  public TemaCienciasSociales getTemaCienciasSociales() {
+  public TemaCienciasSociales getCienciasSociales() {
     return new TemaCienciasSocialesSegundoGrado();
   }
 
   @Override
-  public TemaCTA getTemaCienciaTecnologia() {
+  public TemaCTA getCienciaTecnologia() {
     return new TemaCTASegundoGrado();
   }
 
   @Override
-  public TemaComunicacion getTemaComunicacion() {
+  public TemaComunicacion getComunicacion() {
     return new TemaComunicacionSegundoGrado();
   }
 
   @Override
-  public TemaIngles getTemaIngles() {
+  public TemaIngles getIngles() {
     return new TemaInglesSegundoGrado();
   }
 
   @Override
-  public TemaMatematica getTemaMatematica() {
+  public TemaMatematica getMatematica() {
     return new TemaMatematicaSegundoGrado();
   }
 }

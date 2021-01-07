@@ -10,29 +10,29 @@ import com.edukt.grados.primero.matematica.TemaMatematicaPrimerGrado;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PrimerGradoFactory implements GradoFactory {
+public class TemaPrimerGradoFactory implements GradoFactory {
   @Override
-  public TemaCienciasSociales getTemaCienciasSociales() {
+  public TemaCienciasSociales getCienciasSociales() {
     return new TemaCienciasSocialesPrimerGrado();
   }
 
   @Override
-  public TemaCTA getTemaCienciaTecnologia() {
+  public TemaCTA getCienciaTecnologia() {
     return new TemaCTAPrimerGrado();
   }
 
   @Override
-  public TemaComunicacion getTemaComunicacion() {
+  public TemaComunicacion getComunicacion() {
     return new TemaComunicacionPrimerGrado();
   }
 
   @Override
-  public TemaIngles getTemaIngles() {
+  public TemaIngles getIngles() {
     return new TemaInglesPrimerGrado();
   }
 
   @Override
-  public TemaMatematica getTemaMatematica() {
+  public TemaMatematica getMatematica() {
     return new TemaMatematicaPrimerGrado();
   }
 }
