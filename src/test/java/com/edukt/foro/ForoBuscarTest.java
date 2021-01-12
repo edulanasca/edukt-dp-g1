@@ -1,4 +1,4 @@
-package com.edukt.eduktunmsm;
+package com.edukt.foro;
 
 
 import com.edukt.foro.builder.ComentarioBuilder;
