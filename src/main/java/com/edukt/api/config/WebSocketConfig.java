@@ -1,6 +1,8 @@
 package com.edukt.api.config;
 
+import com.edukt.chat.UserInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
@@ -20,17 +22,18 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
   @Override
   public void registerStompEndpoints(StompEndpointRegistry registry) {
     /*
-    The endpoint /websocket will allow us to connect to ws://localhost:8080/websocket with the default Spring port configuration
+    The endpoint /broadcast will allow us to connect to
+    ws://localhost:8080/broadcast with the default Spring port configuration
      */
-    registry.addEndpoint("/websocket").setAllowedOrigins("*");
+    registry
+        .addEndpoint("/broadcast")
+        .setAllowedOrigins("*")
+        .withSockJS()
+        .setHeartbeatTime(60_000);
 
-    /*
-    This endpoint is special as it uses the SockJS fallback protocol which allows a client
-    which does not support WebSocket natively mimic a WebSocket over an HTTP connection.
-    So for the SockJS endpoint, our connector string would look like http://localhost:8080/sockjs
-     */
-    registry.addEndpoint("/sockjs")
-        .setAllowedOrigins("localhost:3000", "localhost:8080")
+    registry
+        .addEndpoint("/chat")
+        .setAllowedOrigins("*")
         .withSockJS();
   }
 
@@ -42,15 +45,19 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      the client on destinations prefixed with /topic
      */
 
-    registry.enableSimpleBroker("/topic");
+    registry.enableSimpleBroker("/topic", "/queue");
 
     /*
      designates the /app prefix for messages that are bound for methods annotated with @MessageMapping.
      This prefix will be used to define all the message mappings.
      */
     registry.setApplicationDestinationPrefixes("/app");
+    registry.setUserDestinationPrefix("/user");
   }
 
-
+  @Override
+  public void configureClientInboundChannel(ChannelRegistration registration) {
+    registration.interceptors(new UserInterceptor());
+  }
 
 }

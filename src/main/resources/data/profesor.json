@@ -1,0 +1,4 @@
+{
+  "nombre": "str",
+  "especialidad": ["str", "str"]
+}
