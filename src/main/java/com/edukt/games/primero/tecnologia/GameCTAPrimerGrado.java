@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document("CTA4G_Games")
+@Document("GamesCTA1G")
 public class GameCTAPrimerGrado extends GameCTA {
 
   public GameCTAPrimerGrado() {

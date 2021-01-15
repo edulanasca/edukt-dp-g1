@@ -1,4 +1,4 @@
-package com.edukt.games.content.decorator;
+package com.edukt.games.decorator;
 
 import com.edukt.games.content.Game;
 

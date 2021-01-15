@@ -1,8 +1,8 @@
 package com.edukt.games;
 
 import com.edukt.games.content.Content;
-import com.edukt.games.content.decorator.HideWordsDecorator;
-import com.edukt.games.content.decorator.ShuffleWordsDecorator;
+import com.edukt.games.decorator.HideWordsDecorator;
+import com.edukt.games.decorator.ShuffleWordsDecorator;
 import com.edukt.games.primero.GamePrimerGradoFactory;
 import com.edukt.games.primero.tecnologia.GameCTAPrimerGrado;
 import org.junit.jupiter.api.BeforeAll;

@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Clase para configurar la anotacion {@code @CrossOrigin} globalmente
+ */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 

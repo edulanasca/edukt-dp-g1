@@ -1,4 +1,4 @@
-package com.edukt.games.content.decorator;
+package com.edukt.games.decorator;
 
 import com.edukt.games.content.Content;
 import com.edukt.games.content.Game;
@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class ShuffleWordsDecorator extends GameDecorator {
+public class HideWordsDecorator extends GameDecorator {
 
-  public ShuffleWordsDecorator(Game game) {
+  public HideWordsDecorator(Game game) {
     super(game);
   }
 
@@ -21,7 +21,7 @@ public class ShuffleWordsDecorator extends GameDecorator {
           content
               .getWords()
               .stream()
-              .map(this::shuffle)
+              .map(this::hide)
               .collect(Collectors.toList())
       );
     }
@@ -29,16 +29,13 @@ public class ShuffleWordsDecorator extends GameDecorator {
     return super.getContents();
   }
 
-  private String shuffle(String word) {
+  private String hide(String word) {
     char[] chars = word.toCharArray();
     Random rnd = new Random();
 
-    for (int i = chars.length - 1; i > 0; i--) {
+    for (int i = chars.length/2; i > 0; i--) {
       int index = rnd.nextInt(i + 1);
-
-      char a = chars[index];
-      chars[index] = chars[i];
-      chars[i] = a;
+      chars[index] = '*';
     }
 
     return String.valueOf(chars);
