@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/games/CTA1G")
+@RequestMapping("/gamesCTA1G")
 public class GameCTAPrimerGradoController {
 
   private GameCTAPrimerGradoRepository primerGradoRepository;
@@ -18,27 +18,27 @@ public class GameCTAPrimerGradoController {
     this.primerGradoRepository = primerGradoRepository;
   }
 
-  @GetMapping("/{game_id}")
+  @GetMapping
   public GameCTAPrimerGrado getGame(
-      @RequestParam(value = "level", required = false, defaultValue = "") String level,
-      @PathVariable String game_id) {
+      @RequestParam(value = "temaId", required = false) String tema_id,
+      @RequestParam(value = "level", required = false, defaultValue = "") String level) {
     GameCTAPrimerGrado game = this.primerGradoRepository
-        .findById(game_id).orElseGet(GameCTAPrimerGrado::new);
+        .findGameCTAPrimerGradoByTemaId(tema_id);
 
     GameDecorator decorator;
 
     switch (level) {
       case "hide":
         decorator = new HideWordsDecorator(game);
-        game.setContents(decorator.obtenerContenido());
+        game.setContents(decorator.getContents());
         break;
       case "shuffle":
         decorator = new ShuffleWordsDecorator(game);
-        game.setContents(decorator.obtenerContenido());
+        game.setContents(decorator.getContents());
         break;
       case "both":
-        decorator = new HideWordsDecorator(new ShuffleWordsDecorator(game));
-        game.setContents(decorator.obtenerContenido());
+        decorator = new ShuffleWordsDecorator(new HideWordsDecorator(game));
+        game.setContents(decorator.getContents());
         break;
     }
 

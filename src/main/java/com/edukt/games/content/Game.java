@@ -31,6 +31,4 @@ public abstract class Game {
     this(null, contents);
   }
 
-  public abstract List<Content> obtenerContenido();
-
 }

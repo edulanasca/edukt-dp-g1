@@ -3,7 +3,6 @@ package com.edukt.games.decorator;
 import com.edukt.games.content.Content;
 import com.edukt.games.content.Game;
 
-import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -11,11 +10,11 @@ public class ShuffleWordsDecorator extends GameDecorator {
 
   public ShuffleWordsDecorator(Game game) {
     super(game);
+    formatear();
   }
 
   @Override
-  public List<Content> obtenerContenido() {
-
+  protected void formatear() {
     for (Content content : super.getContents()) {
       content.setWords(
           content
@@ -25,8 +24,6 @@ public class ShuffleWordsDecorator extends GameDecorator {
               .collect(Collectors.toList())
       );
     }
-
-    return super.getContents();
   }
 
   private String shuffle(String word) {

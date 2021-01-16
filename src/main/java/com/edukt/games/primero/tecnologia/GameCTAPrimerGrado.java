@@ -12,9 +12,4 @@ public class GameCTAPrimerGrado extends GameCTA {
   public GameCTAPrimerGrado() {
     super();
   }
-
-  @Override
-  public List<Content> obtenerContenido() {
-    return super.getContents();
-  }
 }

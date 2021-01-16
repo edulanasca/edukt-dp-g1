@@ -8,4 +8,5 @@ public abstract class GameDecorator extends Game {
     super(game.getId(), game.getTemaId(), game.getContents());
   }
 
+  protected abstract void formatear();
 }
