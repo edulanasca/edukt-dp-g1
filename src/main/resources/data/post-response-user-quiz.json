@@ -1,0 +1,46 @@
+{
+  "id": null,
+  "preguntas": [
+    {
+      "enunciado": "EN1",
+      "alternativas": [
+        {
+          "descripcion": "1.1",
+          "correcta": false
+        },
+        {
+          "descripcion": "1.2",
+          "correcta": false
+        },
+        {
+          "descripcion": "1.3",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "enunciado": "EN2",
+      "alternativas": [
+        {
+          "descripcion": "2.1",
+          "correcta": false
+        },
+        {
+          "descripcion": "2.2",
+          "correcta": false
+        },
+        {
+          "descripcion": "2.3",
+          "correcta": true
+        }
+      ]
+    }
+  ],
+  "username": "Edu",
+  "puntaje": 1,
+  "quiz_id": "60033bbbc05e9c5717e1cdd3",
+  "state": {
+    "estado": "desaprobado",
+    "profesorAsignado": "Glyn Fergie"
+  }
+}

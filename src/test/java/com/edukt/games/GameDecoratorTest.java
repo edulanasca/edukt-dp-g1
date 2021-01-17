@@ -36,8 +36,8 @@ public class GameDecoratorTest {
 
   @Test
   void gameWithoutDecorator() {
-    assertEquals(ctaPrimerGrado.obtenerContenido().get(0), content);
-    assertEquals(ctaPrimerGrado.obtenerContenido().get(1), content1);
+    assertEquals(ctaPrimerGrado.getContents().get(0), content);
+    assertEquals(ctaPrimerGrado.getContents().get(1), content1);
   }
 
   @Test
@@ -46,14 +46,14 @@ public class GameDecoratorTest {
 
     Iterator<String> it1 =
         ctaPrimerGrado
-            .obtenerContenido()
+            .getContents()
             .stream()
             .flatMap(content -> content.getWords().stream())
             .collect(Collectors.toList())
             .iterator();
 
     Iterator<String> it2 = shuffleWordsDecorator
-        .obtenerContenido()
+        .getContents()
         .stream()
         .flatMap(content -> content.getWords().stream())
         .collect(Collectors.toList())
@@ -73,7 +73,7 @@ public class GameDecoratorTest {
   void gameWithHideWordsDecorator() {
     HideWordsDecorator hideWordsDecorator = new HideWordsDecorator(ctaPrimerGrado);
     hideWordsDecorator
-        .obtenerContenido()
+        .getContents()
         .stream()
         .flatMap(content -> content.getWords().stream())
         .forEach(word -> assertTrue(word.contains("*")));

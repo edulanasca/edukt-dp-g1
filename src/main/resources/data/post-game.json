@@ -1,0 +1,17 @@
+{
+  "contents": [
+    {
+      "description": "Oracion [] oracion mas texto []",
+      "words": [
+        "palabra1", "palabra2"
+      ]
+    },
+    {
+      "description": "Oracion [] oracion",
+      "words": [
+        "palabra1"
+      ]
+    }
+  ],
+  "temaId": "string"
+}
