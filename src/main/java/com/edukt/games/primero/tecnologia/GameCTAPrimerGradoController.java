@@ -6,6 +6,10 @@ import com.edukt.games.decorator.ShuffleWordsDecorator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/gamesCTA1G")
@@ -43,5 +47,31 @@ public class GameCTAPrimerGradoController {
     }
 
     return game;
+  }
+
+  @PostMapping("/validar")
+  public List<Boolean> validarGame(
+      @RequestParam(value = "temaId", required = false) String tema_id,
+      @RequestBody List<String> words) {
+
+    List<Boolean> correccion = new ArrayList<>();
+
+    GameCTAPrimerGrado game = this.primerGradoRepository
+        .findGameCTAPrimerGradoByTemaId(tema_id);
+
+    Iterator<String> wordsFromBd =
+        game
+            .getContents()
+            .stream()
+            .flatMap(content -> content.getWords().stream())
+            .iterator();
+
+    Iterator<String> wordsFromUser = words.iterator();
+
+    while (wordsFromBd.hasNext() && wordsFromUser.hasNext()) {
+      correccion.add(wordsFromBd.next().equals(wordsFromUser.next()));
+    }
+
+    return correccion;
   }
 }
