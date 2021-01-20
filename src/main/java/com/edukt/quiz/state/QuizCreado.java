@@ -44,7 +44,7 @@ public class QuizCreado extends QuizState {
     }
 
     super.userQuiz.setPuntaje(puntaje);
-    super.userQuiz.setState(puntaje >= 11 ? new QuizAprobado(userQuiz) :
+    super.userQuiz.setState(puntaje >= 3 ? new QuizAprobado(userQuiz) :
         new QuizDesaprobado(userQuiz));
   }
 }

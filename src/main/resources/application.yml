@@ -5,4 +5,4 @@ server:
 spring:
   data:
     mongodb:
-      database: edukt-db
+      uri: mongodb+srv://EduJLaC:eJPl9iwQcRKrje70@cluster0.tser4.mongodb.net/edukt-db?retryWrites=true&w=majority

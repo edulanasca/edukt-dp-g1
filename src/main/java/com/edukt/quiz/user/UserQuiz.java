@@ -58,7 +58,6 @@ public class UserQuiz extends AbstractQuiz {
   }
 
   public void revisar(Quiz qFromDb) {
-    this.setQuiz_id(quiz_id);
     this.setState(new QuizCreado(qFromDb, this));
     this.state.checkQuiz();
   }
