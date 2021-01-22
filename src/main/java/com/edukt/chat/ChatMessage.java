@@ -1,13 +1,11 @@
 package com.edukt.chat;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Getter
-@Setter
+@Data
 public class ChatMessage {
   private static final String TIME_FORMATTER= "HH:mm:ss";
 

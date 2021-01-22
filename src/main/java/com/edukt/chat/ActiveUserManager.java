@@ -2,10 +2,7 @@ package com.edukt.chat;
 
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.*;
 
 @Component
@@ -18,7 +15,7 @@ public class ActiveUserManager implements ActiveUserObservable {
   private final ThreadPoolExecutor notifyPool;
 
   private ActiveUserManager() {
-    map = new ConcurrentHashMap<>();
+    map = new HashMap<>();
     observer = new CopyOnWriteArrayList<>();
     notifyPool = new ThreadPoolExecutor(1, 5, 10,
         TimeUnit.SECONDS, new ArrayBlockingQueue<>(100));
@@ -48,7 +45,7 @@ public class ActiveUserManager implements ActiveUserObservable {
    * @return - Conjunto de usuarios exceptuando al username pasado
    */
   public Set<String> getActiveUsersExceptCurrentUser(String username) {
-    Set<String> users = new HashSet<>(map.keySet());
+    Set<String> users = new LinkedHashSet<>(map.keySet());
     users.remove(username);
     return users;
   }

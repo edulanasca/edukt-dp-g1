@@ -27,14 +27,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      */
     registry
         .addEndpoint("/broadcast")
-        .setAllowedOrigins("*")
+        .setAllowedOrigins("http://localhost:3000", "http://localhost:8080")
         .withSockJS()
         .setHeartbeatTime(60_000);
 
     registry
         .addEndpoint("/chat")
-        .setAllowedOrigins("*")
-        .withSockJS();
+        .setAllowedOrigins("*");
   }
 
   @Override
@@ -45,7 +44,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      the client on destinations prefixed with /topic
      */
 
-    registry.enableSimpleBroker("/topic", "/queue");
+    registry.enableSimpleBroker("/topic", "/queue", "/user");
 
     /*
      designates the /app prefix for messages that are bound for methods annotated with @MessageMapping.

@@ -3,12 +3,12 @@ package com.edukt.chat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.Set;
 
+@CrossOrigin
 @RestController
-public class WebSocketConnectionController {
+public class WebSocketConnectionRestController {
 
   private ActiveUserManager activeSessionManager;
 
@@ -18,25 +18,16 @@ public class WebSocketConnectionController {
   }
 
   @PostMapping("/rest/user-connect")
-  public String userConnect(HttpServletRequest request, Map<String, Object> body) {
-    String remoteAddr = "";
-    if (request != null) {
-      remoteAddr = request.getHeader("Remote_Addr");
-      if (remoteAddr.isEmpty()) {
-        remoteAddr = request.getHeader("X-FORWARDED-FOR");
-        if (remoteAddr == null || "".equals(remoteAddr)) {
-          remoteAddr = request.getRemoteAddr();
-        }
-      }
-    }
+  public String userConnect(@RequestBody Map<String, Object> body) {
+    String username = (String) body.get("username");
 
-    activeSessionManager.add((String) body.get("username"), remoteAddr);
+    activeSessionManager.add(username, username);
     activeSessionManager.notifyAllActiveConnections();
-    return remoteAddr;
+    return username;
   }
 
   @PostMapping("/rest/user-disconnect")
-  public String userDisconnect(Map<String, Object> body) {
+  public String userDisconnect(@RequestBody Map<String, Object> body) {
     activeSessionManager.remove((String) body.get("username"));
     activeSessionManager.notifyAllActiveConnections();
     return "disconnected";

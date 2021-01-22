@@ -1,18 +1,18 @@
 package com.edukt.chat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.security.Principal;
 import java.util.Set;
 
+@CrossOrigin
 @Controller
 public class WebSocketChatController implements ActiveUserChangeObserver {
 
@@ -32,7 +32,6 @@ public class WebSocketChatController implements ActiveUserChangeObserver {
   @PostConstruct
   private void init() {
     activeUserManager.registerConnection(this);
-    System.out.println("Active user registrado"); // TODO delete
   }
 
   @PreDestroy
@@ -41,16 +40,16 @@ public class WebSocketChatController implements ActiveUserChangeObserver {
   }
 
   @MessageMapping("/chat")
-  public void send(SimpMessageHeaderAccessor sha, @Payload ChatMessage chatMessage) throws Exception {
-    Principal user = sha.getUser();
-    Assert.notNull(user, "User must not be null");
-    String sender = user.getName();
-    ChatMessage message = new ChatMessage(chatMessage.getFrom(), chatMessage.getText(), chatMessage.getRecipient());
+  public void send(@Payload ChatMessage chatMessage, @Header(name = "sender") String sender) {
+
+    ChatMessage message =
+        new ChatMessage(chatMessage.getFrom(), chatMessage.getText(), chatMessage.getRecipient());
+
     if (!sender.equals(chatMessage.getRecipient())) {
-      webSocket.convertAndSendToUser(sender, "/queue/messages", message);
+      webSocket.convertAndSend("/user/" + chatMessage.getRecipient() + "/message", message);
     }
 
-    webSocket.convertAndSendToUser(chatMessage.getRecipient(), "/queue/messages", message);
+    webSocket.convertAndSend("/user/" + sender + "/message", message);
   }
 
   @Override
