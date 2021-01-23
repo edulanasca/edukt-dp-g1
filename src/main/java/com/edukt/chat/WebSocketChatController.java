@@ -31,12 +31,12 @@ public class WebSocketChatController implements ActiveUserChangeObserver {
 
   @PostConstruct
   private void init() {
-    activeUserManager.registerConnection(this);
+    activeUserManager.registerObserver(this);
   }
 
   @PreDestroy
   private void destroy() {
-    activeUserManager.removeConnection(this);
+    activeUserManager.removeObserver(this);
   }
 
   @MessageMapping("/chat")

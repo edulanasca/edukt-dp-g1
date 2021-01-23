@@ -6,17 +6,17 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @Component
-public class ActiveUserManager implements ActiveUserObservable {
+public class ActiveUserManager implements ActiveUserSubject {
 
   private final Map<String, Object> map;
 
-  private final List<ActiveUserChangeObserver> observer;
+  private final List<ActiveUserChangeObserver> listeners;
 
   private final ThreadPoolExecutor notifyPool;
 
   private ActiveUserManager() {
     map = new HashMap<>();
-    observer = new CopyOnWriteArrayList<>();
+    listeners = new CopyOnWriteArrayList<>();
     notifyPool = new ThreadPoolExecutor(1, 5, 10,
         TimeUnit.SECONDS, new ArrayBlockingQueue<>(100));
   }
@@ -56,8 +56,8 @@ public class ActiveUserManager implements ActiveUserObservable {
    * @param listener - objeto que implementa ActiveUserChangeObserver
    */
   @Override
-  public void registerConnection(ActiveUserChangeObserver listener) {
-    observer.add(listener);
+  public void registerObserver(ActiveUserChangeObserver listener) {
+    listeners.add(listener);
   }
 
   /**
@@ -66,12 +66,12 @@ public class ActiveUserManager implements ActiveUserObservable {
    * @param listener - objeto que implementa ActiveUserChangeObserver
    */
   @Override
-  public void removeConnection(ActiveUserChangeObserver listener) {
-    observer.remove(listener);
+  public void removeObserver(ActiveUserChangeObserver listener) {
+    listeners.remove(listener);
   }
 
   @Override
-  public void notifyAllActiveConnections() {
-    notifyPool.submit(() -> observer.forEach(ActiveUserChangeObserver::notifyActiveUserChange));
+  public void notifyObservers() {
+    notifyPool.submit(() -> listeners.forEach(ActiveUserChangeObserver::notifyActiveUserChange));
   }
 }

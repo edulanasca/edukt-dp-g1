@@ -22,14 +22,14 @@ public class WebSocketConnectionRestController {
     String username = (String) body.get("username");
 
     activeSessionManager.add(username, username);
-    activeSessionManager.notifyAllActiveConnections();
+    activeSessionManager.notifyObservers();
     return username;
   }
 
   @PostMapping("/rest/user-disconnect")
   public String userDisconnect(@RequestBody Map<String, Object> body) {
     activeSessionManager.remove((String) body.get("username"));
-    activeSessionManager.notifyAllActiveConnections();
+    activeSessionManager.notifyObservers();
     return "disconnected";
   }
 
