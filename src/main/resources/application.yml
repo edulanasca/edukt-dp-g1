@@ -5,4 +5,4 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://EduJLaC:eJPl9iwQcRKrje70@cluster0.tser4.mongodb.net/edukt-db?retryWrites=true&w=majority
+      uri: mongodb+srv://edu:mD7jADeX8J4fyrA7@project-physics-db.gdapc.mongodb.net/?retryWrites=true&w=majority
